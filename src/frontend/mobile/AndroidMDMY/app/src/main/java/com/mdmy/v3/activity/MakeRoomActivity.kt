@@ -13,10 +13,9 @@ class MakeRoomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_make_room)
 
-        mkroom_btn.setOnClickListener{
+        btn_makeroom.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
             startActivity(intent)
-
         }
     }
 }

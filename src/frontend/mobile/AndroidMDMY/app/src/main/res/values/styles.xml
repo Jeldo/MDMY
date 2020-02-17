@@ -11,5 +11,4 @@
     <style name="text_style">
         <item name="android:textColor">@color/colorDefaultText</item>
     </style>
-
 </resources>

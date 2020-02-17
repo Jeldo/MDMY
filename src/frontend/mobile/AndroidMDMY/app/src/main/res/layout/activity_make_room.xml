@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/init_back"
+    android:background="@drawable/bg_main"
     tools:context=".activity.MakeRoomActivity">
 
     <ImageView
-        android:id="@+id/logo_icn"
+        android:id="@+id/icn_logo"
         android:layout_width="@dimen/logo_width"
         android:layout_height="@dimen/logo_width"
         android:layout_marginTop="120dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/mkroom_ly"
+        android:id="@+id/LL_makeroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -27,7 +27,7 @@
         android:padding="@dimen/makeroom_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_icn">
+        app:layout_constraintTop_toBottomOf="@id/icn_logo">
 
         <TextView
             style="@style/text_style"
@@ -37,11 +37,11 @@
 
         <EditText
             style="@style/text_style"
-            android:hint="\t방이름을 입력해주세요"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/makeroom_edt_background" />
+            android:background="@drawable/bg_makeroom_edt"
+            android:hint="\t방이름을 입력해주세요" />
 
         <TextView
             style="@style/text_style"
@@ -51,22 +51,21 @@
             android:text="인원수" />
 
         <EditText
-            android:hint="\t예) 6"
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@drawable/makeroom_edt_background" />
+            android:background="@drawable/bg_makeroom_edt"
+            android:hint="\t예) 6" />
 
         <Button
-            android:id="@+id/mkroom_btn"
+            android:id="@+id/btn_makeroom"
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/makeroom_edt_background"
+            android:background="@drawable/bg_makeroom_edt"
             android:text="방만들기" />
-
     </LinearLayout>
 
 

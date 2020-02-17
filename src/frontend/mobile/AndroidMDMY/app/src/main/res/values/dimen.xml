@@ -2,5 +2,4 @@
 <resources>
     <dimen name="logo_width">130dp</dimen>
     <dimen name="makeroom_margin">15dp</dimen>
-
 </resources>
