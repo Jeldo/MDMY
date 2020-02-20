@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const resultSchema = new mongoose.Schema({
-  areas : {
+  areas: {
     type: Array
   },
   meetingID: {

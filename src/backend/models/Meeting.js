@@ -1,14 +1,13 @@
 const mongoose = require('mongoose')
 
 const meetingSchema = new mongoose.Schema({
-  name : {type: String, default: "?"},
-  users : {},
-  number : {type: Number, default:0},
-  token : {type:String},
-  users : [{
-    type: mongoose.Schema.Types.ObjectId, ref: 'MeetingUsers'
+  name: { type: String, default: "?" },
+  number: { type: Number, default: 0 },
+  token: { type: String },
+  users: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'MeetingUsers',
   }],
-  result : {type: Boolean, default:false}
+  result: { type: Boolean, default: false }
 })
 
 meetingSchema.pre('remove', (next) => {

@@ -12,4 +12,4 @@ const connectDB = () => {
 
 const models = { Meeting, CandidateLocs, MeetingUser };
 
-module.exports = { connectDB, Meeting, CandidateLocs, MeetingUser, Result,VotedLocs};
+module.exports = { connectDB, Meeting, CandidateLocs, MeetingUser, Result, VotedLocs };

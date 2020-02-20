@@ -22,7 +22,7 @@ module.exports = () => {
   router.post('/enrolledUser', async (req, res) => {
     let token = req.query.token;
     console.log(req.body.transportation);
-    let createdUser = await makeMeetingUser(token, req.body.name, req.body.transportation,{coordinates: req.body.location, type: "Point"}, req.body.locationName);
+    let createdUser = await makeMeetingUser(token, req.body.name, req.body.transportation, { coordinates: req.body.location, type: "Point" }, req.body.locationName);
     res.json(createdUser);
   });
 
@@ -39,7 +39,7 @@ module.exports = () => {
   });
 
   router.post('/changeMeetingUserNum', async (req, res) => {
-    let changedMeeting = await changeMeetingUserNum(req,query.token, req.body.num);
+    let changedMeeting = await changeMeetingUserNum(req, query.token, req.body.num);
 
     res.json(changedMeeting);
   })

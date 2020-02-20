@@ -88,7 +88,7 @@ const candidatesWithUserData = async (userData, searchPoint) => {
       locCandidates[i].ratingByCrawling = parseFloat((Math.random() * (2.0 - 0.0) + 0.0).toFixed(2));
     }
     area['rating'] = locCandidates[i].ratingByVoting + locCandidates[i].ratingByCrawling + 1;
-    
+
     // user들 각각 계산
     let groupTravelInfo = [];
     for (let j = 0; j < userData.length; j++) {
