@@ -1,7 +1,7 @@
 //To connect DB , must excute mongodb
 let fs = require("fs");
 let mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/db', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/MDMY', { useNewUrlParser: true });
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
