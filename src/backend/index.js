@@ -4,7 +4,6 @@ const models = require('./models');
 const bodyParser = require('body-parser');
 const config = require('./config/server_config.json');
 const rootRouter = require('./router/index')();
-const graphqlRouter = require('./router/graphql')();
 const { typeDefs } = require('./graphql/typeDefs');
 const { resolvers } = require('./graphql/resolvers');
 
@@ -18,10 +17,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api', rootRouter);
-app.use('/api/graphql', graphqlRouter);
+server.applyMiddleware({ app: app, path: '/graphql' });
 
 models.connectDB().then(async () => {
   app.listen({ port: config.port }, () =>
-    console.log('Now browse to http://localhost:' + config.port + server.graphqlPath)
+    console.log(`Server Ready at http://localhost:${config.port}${server.graphqlPath}`)
   );
 });

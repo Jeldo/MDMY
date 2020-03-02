@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const meetingUserSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "?"
   },
   location: {
     type: {
@@ -30,4 +29,4 @@ const meetingUserSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('MeetingUser', meetingUserSchema)
+module.exports = mongoose.model('MeetingUser', meetingUserSchema);
