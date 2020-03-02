@@ -8,30 +8,29 @@ schema {
 type Meeting {
     id: ID!
     meetingName: String!
-    meetingPeopleNumber: Int!
     meetingUsers: [MeetingUser]
+    numberOfPeople: Int!
+    result: Boolean
     token: String
 }
 
 type MeetingUser {
     id: ID!
+    locationName: String
     meetingId: String!
-    userLocation: String!
-    userName: String!
+    meetingUserName: String
+    transportation: String
 }
 
 type Mutation {
-    addMeeting(meetingName: String!, meetingPeopleNumber: Int!): Meeting
-    addMeetingUser(token: String!, userLocation: String!, userName: String!): MeetingUser
+    createMeeting(meetingName: String!, numberOfPeople: Int!): Meeting
+    createMeetingUser(token: String!, userLocation: String!, userName: String!): MeetingUser
     deleteMeeting(id: ID!): Meeting
     deleteMeetingUser(id: ID!): MeetingUser
 }
 
 type Query {
     getMeetingById(id: ID!): Meeting
-    getMeetingByName(meetingName: String!): Meeting
-    getMeetingUserById(id: ID!): MeetingUser
-    getMeetingUsers: [MeetingUser]
     getMeetings: [Meeting]
 }
 

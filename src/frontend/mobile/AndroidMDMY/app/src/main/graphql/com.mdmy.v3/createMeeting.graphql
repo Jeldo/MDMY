@@ -1,0 +1,10 @@
+mutation CreateMeeting($meetingName: String!, $numberOfPeople: Int!){
+    createMeeting(meetingName: $meetingName, numberOfPeople: $numberOfPeople){
+        id,
+        meetingName,
+        numberOfPeople,
+        token,
+        meetingUsers,
+        result,
+    }
+}
