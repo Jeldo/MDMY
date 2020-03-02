@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
 
 const meetingUserSchema = new mongoose.Schema({
-  name : {
+  name: {
     type: String,
-    default: "?"
   },
-  location : {
+  location: {
     type: {
       type: String,
       enum: ['Point'],
@@ -19,7 +18,7 @@ const meetingUserSchema = new mongoose.Schema({
   locationName: {
     type: String,
   },
-  transportation : {
+  transportation: {
     type: String,
     default: "public"
   },
@@ -30,4 +29,4 @@ const meetingUserSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('MeetingUser', meetingUserSchema)
+module.exports = mongoose.model('MeetingUser', meetingUserSchema);

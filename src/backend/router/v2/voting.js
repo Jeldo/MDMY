@@ -9,9 +9,9 @@ module.exports = () => {
 
   router.post('/makeVoting', async (req, res) => {
     let clientToken = req.query.token;
-    let meeting = await db.Meeting.findOne({token : clientToken})
+    let meeting = await db.Meeting.findOne({ token: clientToken })
 
-    let resultData = await db.Result.findOne({meetingID : meeting._id})
+    let resultData = await db.Result.findOne({ meetingID: meeting._id })
     let resultid = resultData._id;
 
     let votingData = new db.VotedLocs({

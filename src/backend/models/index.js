@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
 const Meeting = require('./Meeting.js');
 const MeetingUser = require('./MeetingUser.js');
-const CandidateLocs = require('./CandidateLocs.js');
-const VotedLocs = require('./CandidateVoting.js')
+const CandidateLocation = require('./CandidateLocation.js');
+const CandidateVoting = require('./CandidateVoting.js')
 const Result = require('./Result.js');
 
 const connectDB = () => {
-  console.log("connect with DB")
+  console.log("connect with MDMY DB")
   return mongoose.connect('mongodb://localhost/db', { useNewUrlParser: true });
 };
 
-const models = { Meeting, CandidateLocs, MeetingUser };
-
-module.exports = { connectDB, Meeting, CandidateLocs, MeetingUser, Result,VotedLocs};
+module.exports = { connectDB, Meeting, CandidateLocation, MeetingUser, Result, CandidateVoting };

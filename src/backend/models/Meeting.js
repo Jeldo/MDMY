@@ -1,18 +1,17 @@
 const mongoose = require('mongoose')
 
 const meetingSchema = new mongoose.Schema({
-  name : {type: String, default: "?"},
-  users : {},
-  number : {type: Number, default:0},
-  token : {type:String},
-  users : [{
-    type: mongoose.Schema.Types.ObjectId, ref: 'MeetingUsers'
+  meetingName: { type: String, },
+  numberOfPeople: { type: Number, },
+  token: { type: String, },
+  meetingUsers: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'MeetingUser',
   }],
-  result : {type: Boolean, default:false}
+  result: { type: Boolean, default: false }
 })
 
 meetingSchema.pre('remove', (next) => {
-  this.model('MeetingUsers').deleteMany({ meetingID: this._id }, next);
+  this.model('MeetingUser').deleteMany({ meetingID: this._id }, next);
 });
 
 module.exports = mongoose.model('Meeting', meetingSchema)

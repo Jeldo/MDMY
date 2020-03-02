@@ -7,7 +7,6 @@ module.exports = () => {
   router.use((req, res, next) => {
     next();
   });
-
   router.post('/findLoc', async (req, res) => {
 
     let meetingData = await db.Meeting.findOne({
@@ -19,7 +18,7 @@ module.exports = () => {
       res.json({
         msg: "잘못된 경로입니다."
       });
-      return ;
+      return;
     } else if (meetingData.result == true) {
       let result = await db.Result.findOne({
         meetingID: meetingData._id

@@ -10,4 +10,4 @@ const CandidateVotingSchema = new mongoose.Schema({
   location: {}
 });
 
-module.exports = mongoose.model('VotedLocs', CandidateVotingSchema);
+module.exports = mongoose.model('CandidateVoting', CandidateVotingSchema);

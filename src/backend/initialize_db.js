@@ -11,7 +11,7 @@ db.once('open', function () {
 
 //define schema
 let locationSchema = new mongoose.Schema({
-  location : {
+  location: {
     type: {
       type: String,
       enum: ['Point'],
@@ -25,7 +25,7 @@ let locationSchema = new mongoose.Schema({
   name: String
 });
 
-locationSchema.index({location: '2dsphere'});
+locationSchema.index({ location: '2dsphere' });
 
 // compile schema to model
 let areaModel = mongoose.model('CandidateLocs', locationSchema);
