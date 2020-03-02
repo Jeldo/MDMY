@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">미드모여</string>
+    <string name="make_room">방만들기</string>
+    <string name="participant_number">인원수</string>
+    <string name="hint_room_name">\t방이름을 입력해주세요</string>
+    <string name="hint_participant_number">\t예) 6</string>
+    <string name="room_name">방이름</string>
 </resources>
