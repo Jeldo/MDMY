@@ -7,7 +7,7 @@ const Result = require('./Result.js');
 
 const connectDB = () => {
   console.log("connect with MDMY DB")
-  return mongoose.connect('mongodb://localhost/db', { useNewUrlParser: true });
+  return mongoose.connect('mongodb://localhost/MDMY', { useNewUrlParser: true });
 };
 
 module.exports = { connectDB, Meeting, CandidateLocation, MeetingUser, Result, CandidateVoting };
