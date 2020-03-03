@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    tools:context=".activity.MakeRoomActivity">
+    tools:context=".activity.CreateRoomActivity">
 
     <ImageView
         android:id="@+id/icn_logo"
@@ -33,30 +33,32 @@
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="방이름" />
+            android:text="@string/room_name" />
 
         <EditText
+            android:id="@+id/et_meeting_name"
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/bg_makeroom_edt"
-            android:hint="\t방이름을 입력해주세요" />
+            android:hint="@string/hint_room_name" />
 
         <TextView
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/makeroom_margin"
-            android:text="인원수" />
+            android:text="@string/participant_number" />
 
         <EditText
+            android:id="@+id/et_number_of_people"
             style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/bg_makeroom_edt"
-            android:hint="\t예) 6" />
+            android:hint="@string/hint_number_of_people" />
 
         <Button
             android:id="@+id/btn_makeroom"
@@ -65,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@drawable/bg_makeroom_edt"
-            android:text="방만들기" />
+            android:text="@string/make_room" />
     </LinearLayout>
 
 

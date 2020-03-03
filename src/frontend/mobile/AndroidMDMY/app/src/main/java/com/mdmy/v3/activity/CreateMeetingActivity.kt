@@ -1,18 +1,17 @@
 package com.mdmy.v3.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.mdmy.v3.R
-import kotlinx.android.synthetic.main.activity_make_room.*
+import kotlinx.android.synthetic.main.activity_create_room.*
 
-class MakeRoomActivity : AppCompatActivity() {
+class CreateMeetingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_make_room)
-
+        setContentView(R.layout.activity_create_room)
         btn_makeroom.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
             startActivity(intent)

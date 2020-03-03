@@ -1,0 +1,10 @@
+mutation DeleteMeeting($id: ID!){
+    deleteMeeting(id: $id){
+        id,
+        meetingName,
+        numberOfPeople,
+        token,
+        meetingUsers,
+        result,
+    }
+}
