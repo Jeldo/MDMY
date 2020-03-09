@@ -2,7 +2,7 @@ const { MeetingUser, Meeting } = require('../../models');
 
 const meetingUserResolvers = {
   Query: {
-    // getMeetingUsers: async () => await MeetingUser.find({}),
+    getMeetingUsers: async () => await MeetingUser.find({}),
     // getMeetingUserById: async (_, { id }) => await MeetingUser.findById(id),
   },
   Mutation: {
@@ -23,12 +23,15 @@ const meetingUserResolvers = {
       try {
         meetingUser = new MeetingUser({
           userName: args.userName,
-          userLocation: args.userLocation,
+          location: {
+            type: "Point",
+            coordinates: args.location.coordinates
+          },
+          locationName: args.locationName,
           meetingId: meeting._id,
         });
         return await meetingUser.save();
       } catch (e) {
-        console.log('meetinguser>>', meetingUser);
         return e.message;
       }
     },

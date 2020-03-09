@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const meetingUserSchema = new mongoose.Schema({
-  name: {
+  userName: {
     type: String,
   },
   location: {
@@ -22,9 +22,9 @@ const meetingUserSchema = new mongoose.Schema({
     type: String,
     default: "public"
   },
-  meetingID: {
+  meetingId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meetings',
+    ref: 'Meeting',
     required: true
   }
 });
