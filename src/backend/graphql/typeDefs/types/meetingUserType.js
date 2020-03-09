@@ -3,11 +3,15 @@ const { gql } = require('apollo-server-express');
 const meetingUserType = gql`
   type MeetingUser {
     id: ID!,
-    meetingUserName: String,
-    # location:  #def coords
-    locationName: String,
-    transportation: String,
+    userName: String!,
+    location: Coordinates!,
+    locationName: String!,
+    transportation: String!,
     meetingId: String!,
+  }
+
+  type Coordinates {
+    coordinates: [Float!]!,
   }
 `;
 
