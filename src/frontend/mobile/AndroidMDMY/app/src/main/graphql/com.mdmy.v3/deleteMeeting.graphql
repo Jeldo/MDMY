@@ -4,7 +4,7 @@ mutation DeleteMeeting($id: ID!){
         meetingName,
         numberOfPeople,
         token,
-        meetingUsers,
+#        meetingUsers,
         result,
     }
 }

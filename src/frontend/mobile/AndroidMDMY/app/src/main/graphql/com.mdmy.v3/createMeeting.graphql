@@ -4,7 +4,13 @@ mutation CreateMeeting($meetingName: String!, $numberOfPeople: Int!){
         meetingName,
         numberOfPeople,
         token,
-        meetingUsers,
+        meetingUsers{
+            id,
+            userName,
+            locationName,
+            transportation,
+            meetingId
+        }
         result,
     }
 }
