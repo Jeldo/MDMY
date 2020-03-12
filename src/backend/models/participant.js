@@ -1,7 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const meetingUserSchema = new mongoose.Schema({
-  userName: {
+const participantSchema = new mongoose.Schema({
+  meetingId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'meeting',
+  },
+  participantName: {
     type: String,
   },
   location: {
@@ -22,11 +26,6 @@ const meetingUserSchema = new mongoose.Schema({
     type: String,
     default: "public"
   },
-  meetingId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meeting',
-    required: true
-  }
 });
 
-module.exports = mongoose.model('MeetingUser', meetingUserSchema);
+module.exports = mongoose.model('participant', participantSchema);

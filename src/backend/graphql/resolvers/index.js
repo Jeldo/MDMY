@@ -1,9 +1,7 @@
-const { meetingUserResolvers } = require('./meetingUserResolvers');
+const { participantResolvers } = require('./participantResolvers');
 const { meetingResolvers } = require('./meetingResolvers');
-// const { locationResolvers } = require('./locationResolvers');
 
-// TODO(Taeyoung): add locationResolvers
-const resolvers = [meetingUserResolvers, meetingResolvers,];
+const resolvers = [participantResolvers, meetingResolvers,];
 
 module.exports = {
   resolvers,

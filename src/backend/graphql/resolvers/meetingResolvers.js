@@ -1,7 +1,14 @@
-const { Meeting } = require('../../models');
+const { ApolloError } = require('apollo-server-express');
+const { Meeting, Participant } = require('../../models');
 const crypto = require('crypto');
 
 const meetingResolvers = {
+  // for relationship
+  Meeting: {
+    participants: async (meeting, { }) => {
+      return await Participant.find({ meetingId: meeting._id });
+    },
+  },
   Query: {
     getMeetings: async () => await Meeting.find({}),
     getMeetingById: async (_, { id }) => await Meeting.findById(id),
@@ -10,23 +17,25 @@ const meetingResolvers = {
     createMeeting: async (_, args) => {
       try {
         let token = crypto.randomBytes(100).toString('hex');
-        let meeting = new Meeting({
+        let newMeeting = new Meeting({
           meetingName: args.meetingName,
-          numberOfPeople: args.numberOfPeople,
+          numberOfParticipants: args.numberOfParticipants,
           token: token,
+          participants: [],
         });
-        return await meeting.save();
+        return await newMeeting.save();
       } catch (e) {
         return e.message;
       }
     },
     // args.id == { id }
     deleteMeeting: async (_, { id }) => {
-      try {
-        let deletedMeeting = await Meeting.findOneAndDelete({ _id: id });
-        return deletedMeeting;
-      } catch (e) {
-        return e.message;
+      let deletedMeeting = await Meeting.findOneAndDelete({ _id: id });
+      if (deletedMeeting) {
+        await Participant.deleteMany({ meetingId: id });
+        return deletedMeeting
+      } else {
+        throw new ApolloError('Invalid Meeting ID', 404);
       }
     }
   },

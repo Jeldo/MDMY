@@ -1,7 +1,7 @@
 const { meetingType } = require('./meetingType');
-const { meetingUserType } = require('./meetingUserType');
+const { participantType } = require('./participantType');
 
 module.exports = {
   meetingType,
-  meetingUserType,
+  participantType,
 };

@@ -2,7 +2,8 @@ const { gql } = require('apollo-server-express');
 
 const query = gql`
   type Query {
-    getMeetingUsers: [MeetingUser],
+    getParticipantById(id:ID!): Participant,
+    getParticipants: [Participant],
     getMeetingById(id:ID!): Meeting,
     getMeetings: [Meeting],
   }
