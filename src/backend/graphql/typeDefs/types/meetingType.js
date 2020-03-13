@@ -2,12 +2,12 @@ const { gql } = require('apollo-server-express');
 
 const meetingType = gql`
   type Meeting {
-    id: ID!,
-    meetingName: String!,
-    numberOfPeople: Int!,
-    token: String,
-    meetingUsers: [MeetingUser],
-    result: Boolean,
+    _id: ID!,
+    meetingName: String,
+    numberOfParticipants: Int!,
+    token: String!,
+    participants: [Participant]!,
+    result: Boolean!,
   }
 `;
 

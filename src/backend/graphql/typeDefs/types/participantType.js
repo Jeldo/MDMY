@@ -1,13 +1,13 @@
 const { gql } = require('apollo-server-express');
 
-const meetingUserType = gql`
-  type MeetingUser {
-    id: ID!,
-    userName: String!,
+const participantType = gql`
+  type Participant {
+    _id: ID!,
+    participantName: String!,
     location: Coordinates!,
     locationName: String!,
     transportation: String!,
-    meetingId: String!,
+    meeting: Meeting!
   }
 
   type Coordinates {
@@ -16,5 +16,5 @@ const meetingUserType = gql`
 `;
 
 module.exports = {
-  meetingUserType,
+  participantType,
 };
