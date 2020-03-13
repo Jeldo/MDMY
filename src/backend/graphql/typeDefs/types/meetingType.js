@@ -6,8 +6,8 @@ const meetingType = gql`
     meetingName: String!,
     numberOfParticipants: Int!,
     token: String!,
-    participants: [Participant],
-    result: Boolean!,
+    participants: [Participant]!,
+    result: Result,
   }
 `;
 

@@ -4,9 +4,11 @@ const participantSchema = new mongoose.Schema({
   meetingId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'meeting',
+    required: true,
   },
   participantName: {
     type: String,
+    required: true,
   },
   location: {
     type: {
@@ -16,15 +18,17 @@ const participantSchema = new mongoose.Schema({
     },
     coordinates: {
       type: [Number],
-      required: true
+      required: true,
     }
   },
   locationName: {
     type: String,
+    required: true,
   },
   transportation: {
     type: String,
-    default: "public"
+    default: "public",
+    required: true,
   },
 });
 

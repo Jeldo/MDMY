@@ -21,7 +21,7 @@ const participantResolvers = {
       if (targetMeeting == null) {
         throw new UserInputError('Invalid Token');
       }
-      if (targetMeeting.numberOfParticipants === targetMeeting.participants.length) {
+      if (targetMeeting.numberOfParticipants == targetMeeting.participants.length) {
         throw new ApolloError('Cannot add more user');
       }
       let newParticipant;

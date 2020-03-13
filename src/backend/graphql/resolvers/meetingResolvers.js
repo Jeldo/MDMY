@@ -1,5 +1,5 @@
 const { ApolloError } = require('apollo-server-express');
-const { Meeting, Participant } = require('../../models');
+const { Meeting, Participant, Result } = require('../../models');
 const crypto = require('crypto');
 
 const meetingResolvers = {
@@ -7,6 +7,9 @@ const meetingResolvers = {
   Meeting: {
     participants: async (meeting, { }) => {
       return await Participant.find({ meetingId: meeting._id });
+    },
+    result: async (meeting, { }) => {
+      return await Result.findOne({ meetingId: meeting._id });
     },
   },
   Query: {
