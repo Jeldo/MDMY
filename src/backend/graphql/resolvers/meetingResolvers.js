@@ -12,6 +12,7 @@ const meetingResolvers = {
   Query: {
     getMeetings: async () => await Meeting.find({}),
     getMeetingById: async (_, { id }) => await Meeting.findById(id),
+    getMeetingByToken: async (_, { token }) => await Meeting.findOne({ token: token }),
   },
   Mutation: {
     createMeeting: async (_, args) => {
