@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">미드모여</string>
-    <string name="make_room">방만들기</string>
+    <string name="make_meeting">방만들기</string>
     <string name="participant_number">인원수</string>
-    <string name="hint_room_name">\t방이름을 입력해주세요</string>
+    <string name="hint_meeting_name">\t방이름을 입력해주세요</string>
     <string name="hint_number_of_people">\t예) 6</string>
-    <string name="room_name">방이름</string>
+    <string name="meeting_name">방이름</string>
+    <string name="alert_meeeting_name">모임 이름을 입력해주세요.</string>
+    <string name="alert_participant_number">2명 이상의 인원수를 입력해주세요.</string>
+    <string name="alert_network">네트워크를 확인해 주세요</string>
+
 </resources>
