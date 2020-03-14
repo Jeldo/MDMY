@@ -1,5 +1,5 @@
 const { Participant, Meeting } = require('../../models');
-const { UserInputError } = require('apollo-server-express');
+const { UserInputError, ApolloError } = require('apollo-server-express');
 
 const participantResolvers = {
   // for relationship
@@ -20,6 +20,9 @@ const participantResolvers = {
       });
       if (targetMeeting == null) {
         throw new UserInputError('Invalid Token');
+      }
+      if (targetMeeting.numberOfParticipants == targetMeeting.participants.length) {
+        throw new ApolloError('Cannot add more user');
       }
       let newParticipant;
       try {

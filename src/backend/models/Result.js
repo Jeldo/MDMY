@@ -1,15 +1,15 @@
 const mongoose = require('mongoose')
 
 const resultSchema = new mongoose.Schema({
-  areas: {
-    type: Array
-  },
-  meetingID: {
+  meetingId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meetings',
+    ref: 'meeting',
     required: true,
     unique: true
-  }
+  },
+  areas: {
+    type: Array,
+  },
 });
 
-module.exports = mongoose.model('Result', resultSchema)
+module.exports = mongoose.model('result', resultSchema);

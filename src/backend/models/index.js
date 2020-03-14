@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Meeting = require('./meeting');
-const Participant = require('./participant');
+const Meeting = require('./Meeting');
+const Participant = require('./Participant');
 const CandidateLocation = require('./CandidateLocation.js');
 const CandidateVoting = require('./CandidateVoting.js')
-const Result = require('./Result.js');
+const Result = require('./Result');
 
 const connectDB = () => {
   console.log("connect with MDMY DB")

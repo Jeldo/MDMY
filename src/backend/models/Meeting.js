@@ -8,7 +8,11 @@ const meetingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'participant',
   }],
-  result: { type: Boolean, default: false },
+  result: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'result',
+  },
+  // result: { type: Boolean, default: false },
 });
 
 // meetingSchema.pre('remove', (next) => {
