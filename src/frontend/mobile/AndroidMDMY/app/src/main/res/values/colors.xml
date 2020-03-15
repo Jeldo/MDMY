@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorDefaultText">#000000</color>
-    <color name="colorMakeRoom">#CCeba5ee</color>
+    <color name="colorCreateMeeting">#CCeba5ee</color>
     <color name="hintColor">#797979</color>
+    <color name="alertColor">#FF0000</color>
 </resources>

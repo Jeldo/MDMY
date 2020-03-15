@@ -1,16 +1,8 @@
-mutation CreateMeeting($meetingName: String!, $numberOfPeople: Int!){
-    createMeeting(meetingName: $meetingName, numberOfPeople: $numberOfPeople){
-        id,
-        meetingName,
-        numberOfPeople,
-        token,
-        meetingUsers{
-            id,
-            userName,
-            locationName,
-            transportation,
-            meetingId
-        }
-        result,
+mutation CreateMeeting($meetingName: String!,$numberOfParticipants: Int!){
+    createMeeting(meetingName:$meetingName,numberOfParticipants:$numberOfParticipants){
+        _id
+        meetingName
+        numberOfParticipants
+        token
     }
 }
