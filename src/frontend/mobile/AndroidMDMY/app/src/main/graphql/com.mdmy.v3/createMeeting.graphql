@@ -4,23 +4,5 @@ mutation CreateMeeting($meetingName: String!,$numberOfParticipants: Int!){
         meetingName
         numberOfParticipants
         token
-        participants{
-            _id
-            participantName
-            location{
-                coordinates
-            }
-            transportation
-            locationName
-            meeting{
-                _id
-            }
-        }
-        result{
-            _id
-            area{
-                areaName
-            }
-        }
     }
 }
