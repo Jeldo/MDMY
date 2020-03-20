@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient
 
 class ApolloService {
 
-    private val baseURL = "http://192.168.0.40:8000/graphql"
+    private val baseURL = "http://192.168.0.24:8000/graphql"
 
     companion object {
         var apolloClient: ApolloClient = ApolloService().getApolloClient()
