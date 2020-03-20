@@ -1,5 +1,4 @@
 const { Meeting } = require('../../models');
-const { ApolloError } = require('apollo-server-express');
 
 const resultResolvers = {
   // for relationship

@@ -12,6 +12,7 @@ const mutation = gql`
     deleteParticipant(id: ID!): Participant,
     createMeeting(meetingName: String!, numberOfParticipants: Int!): Meeting!,
     deleteMeeting(id: ID!): Meeting,
+    getMeetingResult(token: String, searchPoint: [Float!]!): Meeting,
   }
 
   input InputCoordinates {
@@ -21,4 +22,4 @@ const mutation = gql`
 
 module.exports = {
   mutation,
-}
+};
