@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const candidatesWithUserData = require('../../lib/findRoute/candidatesWithUserData.js');
+const candidatesWithUserData = require('../../lib/findRoute/result.js');
 const db = require('../../models')
 
 module.exports = () => {
