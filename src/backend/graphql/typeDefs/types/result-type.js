@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const resultType = gql`
   type Result {
     _id: ID!,
-    areas: [JSONObject],
+    candidates: [JSONObject],
     meeting: Meeting!
   }
 `;

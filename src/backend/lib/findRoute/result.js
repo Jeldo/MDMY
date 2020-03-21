@@ -39,7 +39,7 @@ const calculateAvg = (groupTravelInfo) => {
 */
 const sortCandidates = (result, option = 3) => {
   if (option == 0) {
-    result.areas.sort(function sortByAvgDistance(c1, c2) {
+    result.candidates.sort(function sortByAvgDistance(c1, c2) {
       if (c1.average.avgDistance == c2.average.avgDistance) {
         return 0;
       } else {
@@ -47,7 +47,7 @@ const sortCandidates = (result, option = 3) => {
       }
     });
   } else if (option == 1) {
-    result.areas.sort(function sortByAvgDuration(c1, c2) {
+    result.candidates.sort(function sortByAvgDuration(c1, c2) {
       if (c1.average.avgDuration == c2.average.avgDuration) {
         return 0;
       } else {
@@ -55,7 +55,7 @@ const sortCandidates = (result, option = 3) => {
       }
     });
   } else if (option == 2) {
-    result.areas.sort(function sortBydistanceStdDeviation(c1, c2) {
+    result.candidates.sort(function sortBydistanceStdDeviation(c1, c2) {
       if (c1.average.distanceStdDeviation == c2.average.distanceStdDeviation) {
         return 0;
       } else {
@@ -63,7 +63,7 @@ const sortCandidates = (result, option = 3) => {
       }
     });
   } else if (option == 3) {
-    result.areas.sort(function sortBydurationStdDeviation(c1, c2) {
+    result.candidates.sort(function sortBydurationStdDeviation(c1, c2) {
       if (c1.average.durationStdDeviation == c2.average.durationStdDeviation) {
         return 0;
       } else {
@@ -75,7 +75,7 @@ const sortCandidates = (result, option = 3) => {
 
 const getResult = async (participants, searchPoint) => {
   let result = {
-    'areas': []
+    'candidates': []
   };
 
   let candidateLocations = await candidateFinder.findCandidateLocation(
@@ -87,11 +87,11 @@ const getResult = async (participants, searchPoint) => {
   }
 
   for (let i = 0; i < candidateLocations.length; i++) {
-    let area = {};
-    area.name = candidateLocations[i].name;
-    area.location = candidateLocations[i].location;
-    area.numberOfVotes = 0;
-    area.average = {};
+    let candidate = {};
+    candidate.name = candidateLocations[i].name;
+    candidate.location = candidateLocations[i].location;
+    candidate.numberOfVotes = 0;
+    candidate.average = {};
     // TODO(Taeyoung): Redefine rating
     if (candidateLocations[i].ratingByVoting === undefined) {
       candidateLocations[i].ratingByVoting = parseFloat(
@@ -103,7 +103,7 @@ const getResult = async (participants, searchPoint) => {
         (Math.random() * (2.0 - 0.0) + 0.0).toFixed(2)
       );
     }
-    area['rating'] = candidateLocations[i].ratingByVoting
+    candidate.rating = candidateLocations[i].ratingByVoting
       + candidateLocations[i].ratingByCrawling + 1;
 
     // user들 각각 계산
@@ -125,14 +125,14 @@ const getResult = async (participants, searchPoint) => {
       }
       groupTravelInfo.push(userTravelInfo);
     }
-    area.users = groupTravelInfo;
+    candidate.users = groupTravelInfo;
 
     let averages = calculateAvg(groupTravelInfo);
-    area.average.avgDuration = averages.midAvgDuration;
-    area.average.avgDistance = averages.midAvgDistance;
-    area.average.distanceStdDeviation = averages.distanceStdDeviation;
-    area.average.durationStdDeviation = averages.durationStdDeviation;
-    result.areas.push(area);
+    candidate.average.avgDuration = averages.midAvgDuration;
+    candidate.average.avgDistance = averages.midAvgDistance;
+    candidate.average.distanceStdDeviation = averages.distanceStdDeviation;
+    candidate.average.durationStdDeviation = averages.durationStdDeviation;
+    result.candidates.push(candidate);
   }
 
   //처음 결과는 duration을 기준으로 sort

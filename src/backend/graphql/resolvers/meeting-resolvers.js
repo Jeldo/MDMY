@@ -68,7 +68,7 @@ const meetingResolvers = {
           } else {
             let newResult = new Result({
               meetingId: meeting._id,
-              areas: result.areas,
+              candidates: result.candidates,
             });
             await newResult.save();
             meeting.result = newResult._id;
@@ -88,12 +88,11 @@ const meetingResolvers = {
         throw new ApolloError('Invalid Token', 401);
       }
       let result = await Result.findOne({ meetingId: meeting._id });
-      for (let i = 0; i < result.areas.length; ++i) {
-        if (args.locationName == result.areas[i].name) {
-          console.log(args.locationName, result.areas[i].name);
-          ++result.areas[i].numberOfVotes;
-        }
-      }
+      let targetCandidate = result.candidates.find(
+        candidate => candidate.name == args.locationName
+      );
+      // TODO(Taeyoung): Block if the number exceeds the number of participants
+      ++targetCandidate.numberOfVotes;
       await Result.findOneAndUpdate({ _id: result._id }, result, { new: true });
       return meeting;
     },
