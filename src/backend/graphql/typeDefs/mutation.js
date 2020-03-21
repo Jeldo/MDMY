@@ -5,14 +5,15 @@ const mutation = gql`
     createParticipant(
       participantName: String!,
       location: InputCoordinates!,
-      locationName:String!,
+      locationName: String!,
       transportation: String!,
       token: String!
     ): Participant,
     deleteParticipant(id: ID!): Participant,
     createMeeting(meetingName: String!, numberOfParticipants: Int!): Meeting!,
     deleteMeeting(id: ID!): Meeting,
-    getMeetingResult(token: String, searchPoint: [Float!]!): Meeting,
+    getMeetingResult(token: String!, searchPoint: [Float!]!): Meeting,
+    castVote(token: String!, locationName: String!): Meeting,
   }
 
   input InputCoordinates {

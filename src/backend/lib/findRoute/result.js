@@ -37,9 +37,9 @@ const calculateAvg = (groupTravelInfo) => {
   2 (distance standard deviation)
   3 (duration standard deviation)
 */
-const sortByDuration = (output, option = 3) => {
+const sortCandidates = (result, option = 3) => {
   if (option == 0) {
-    output.areas.sort(function sortByAvgDistance(c1, c2) {
+    result.areas.sort(function sortByAvgDistance(c1, c2) {
       if (c1.average.avgDistance == c2.average.avgDistance) {
         return 0;
       } else {
@@ -47,7 +47,7 @@ const sortByDuration = (output, option = 3) => {
       }
     });
   } else if (option == 1) {
-    output.areas.sort(function sortByAvgDuration(c1, c2) {
+    result.areas.sort(function sortByAvgDuration(c1, c2) {
       if (c1.average.avgDuration == c2.average.avgDuration) {
         return 0;
       } else {
@@ -55,7 +55,7 @@ const sortByDuration = (output, option = 3) => {
       }
     });
   } else if (option == 2) {
-    output.areas.sort(function sortBydistanceStdDeviation(c1, c2) {
+    result.areas.sort(function sortBydistanceStdDeviation(c1, c2) {
       if (c1.average.distanceStdDeviation == c2.average.distanceStdDeviation) {
         return 0;
       } else {
@@ -63,7 +63,7 @@ const sortByDuration = (output, option = 3) => {
       }
     });
   } else if (option == 3) {
-    output.areas.sort(function sortBydurationStdDeviation(c1, c2) {
+    result.areas.sort(function sortBydurationStdDeviation(c1, c2) {
       if (c1.average.durationStdDeviation == c2.average.durationStdDeviation) {
         return 0;
       } else {
@@ -74,7 +74,7 @@ const sortByDuration = (output, option = 3) => {
 };
 
 const getResult = async (participants, searchPoint) => {
-  let output = {
+  let result = {
     'areas': []
   };
 
@@ -88,9 +88,10 @@ const getResult = async (participants, searchPoint) => {
 
   for (let i = 0; i < candidateLocations.length; i++) {
     let area = {};
-    area['name'] = candidateLocations[i].name;
-    area['location'] = candidateLocations[i].location;
-    area['average'] = {};
+    area.name = candidateLocations[i].name;
+    area.location = candidateLocations[i].location;
+    area.numberOfVotes = 0;
+    area.average = {};
     // TODO(Taeyoung): Redefine rating
     if (candidateLocations[i].ratingByVoting === undefined) {
       candidateLocations[i].ratingByVoting = parseFloat(
@@ -124,19 +125,19 @@ const getResult = async (participants, searchPoint) => {
       }
       groupTravelInfo.push(userTravelInfo);
     }
-    area['users'] = groupTravelInfo;
+    area.users = groupTravelInfo;
 
     let averages = calculateAvg(groupTravelInfo);
     area.average.avgDuration = averages.midAvgDuration;
     area.average.avgDistance = averages.midAvgDistance;
     area.average.distanceStdDeviation = averages.distanceStdDeviation;
     area.average.durationStdDeviation = averages.durationStdDeviation;
-    output.areas.push(area);
+    result.areas.push(area);
   }
 
   //처음 결과는 duration을 기준으로 sort
-  sortByDuration(output, 3);
-  return output;
+  sortCandidates(result, 3);
+  return result;
 };
 
 module.exports = {

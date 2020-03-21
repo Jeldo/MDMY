@@ -82,6 +82,21 @@ const meetingResolvers = {
       }
       return meeting;
     },
+    castVote: async (_, args) => {
+      let meeting = await Meeting.findOne({ token: args.token });
+      if (!meeting) {
+        throw new ApolloError('Invalid Token', 401);
+      }
+      let result = await Result.findOne({ meetingId: meeting._id });
+      for (let i = 0; i < result.areas.length; ++i) {
+        if (args.locationName == result.areas[i].name) {
+          console.log(args.locationName, result.areas[i].name);
+          ++result.areas[i].numberOfVotes;
+        }
+      }
+      await Result.findOneAndUpdate({ _id: result._id }, result, { new: true });
+      return meeting;
+    },
   }
 };
 
