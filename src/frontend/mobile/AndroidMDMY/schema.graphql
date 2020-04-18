@@ -24,7 +24,8 @@ type Meeting {
 
 type Mutation {
     createMeeting(meetingName: String!, numberOfParticipants: Int!): Meeting!
-    createParticipant(location: InputCoordinates!, locationName: String!, participantName: String!, token: String!, transportation: String!): Participant
+    createParticipant(location: InputCoordinates!, locationName: String!,
+        participantName: String!, token: String!, transportation: String!): Participant
     deleteMeeting(id: ID!): Meeting
     deleteParticipant(id: ID!): Participant
 }

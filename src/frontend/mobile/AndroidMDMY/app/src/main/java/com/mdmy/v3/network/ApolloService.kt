@@ -1,15 +1,11 @@
 package com.mdmy.v3.network
 
-import android.annotation.SuppressLint
-import android.util.Log
 import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.rx2.rxMutate
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 
 class ApolloService {
 
-    private val baseURL = "http://192.168.0.40:8000/graphql"
+    private val baseURL = "http://192.168.0.24:8000/graphql"
 
     companion object {
         var apolloClient: ApolloClient = ApolloService().getApolloClient()

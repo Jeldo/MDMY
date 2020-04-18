@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_makeroom"
+            android:id="@+id/layout_create_meeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/create_meeting_margin"
-                android:background="@drawable/bg_makeroom_edt"
+                android:background="@drawable/bg_create_meeting_edt"
                 android:hint="@string/hint_meeting_name"
                 android:maxLines="1"
                 android:textColorHint="@color/hintColor"
@@ -63,13 +63,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/alert_meeeting_name"
+                android:text="@string/alert_meeting_name"
                 android:textColor="@color/alertColor"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/et_meeting_name"
-                tools:text="@string/alert_meeeting_name" />
+                tools:text="@string/alert_meeting_name" />
 
             <TextView
                 android:id="@+id/tv_participants_num"
@@ -82,13 +82,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_meeting_name_err" />
 
             <EditText
-                android:id="@+id/et_participants_num"
+                android:id="@+id/et_number_of_participant"
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/bg_makeroom_edt"
-                android:hint="@string/hint_number_of_people"
+                android:background="@drawable/bg_create_meeting_edt"
+                android:hint="@string/hint_number_of_participant"
                 android:inputType="number"
                 android:maxLines="1"
                 android:textColorHint="@color/hintColor"
@@ -96,30 +96,30 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_participants_num" />
 
             <TextView
-                android:id="@+id/tv_participants_num_err"
+                android:id="@+id/tv_number_of_participant_err"
                 style="@style/text_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/alert_participant_number"
+                android:text="@string/alert_number_of_participant"
                 android:textColor="@color/alertColor"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_participants_num" />
+                app:layout_constraintTop_toBottomOf="@id/et_number_of_participant" />
 
             <Button
-                android:id="@+id/btn_makeroom"
+                android:id="@+id/btn_create_meeting"
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_makeroom_edt"
-                android:text="@string/make_meeting"
+                android:background="@drawable/bg_create_meeting_edt"
+                android:text="@string/create_meeting"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_participants_num_err" />
+                app:layout_constraintTop_toBottomOf="@id/tv_number_of_participant_err" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

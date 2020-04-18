@@ -25,15 +25,15 @@ class CreateMeetingActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        btn_makeroom.setOnClickListener {
+        btn_create_meeting.setOnClickListener {
             if (et_meeting_name.text.toString() == "") {
                 tv_meeting_name_err.visibility = VISIBLE
                 return@setOnClickListener
             }
             meetingName = et_meeting_name.text.toString()
-            numberOfParticipants = et_participants_num.text.toString().toIntOrNull()
+            numberOfParticipants = et_number_of_participant.text.toString().toIntOrNull()
             if (numberOfParticipants == null || numberOfParticipants!! < 2) {
-                tv_participants_num_err.visibility = VISIBLE
+                tv_number_of_participant_err.visibility = VISIBLE
                 return@setOnClickListener
             }
             val createMeetingMutation: CreateMeetingMutation =
@@ -42,7 +42,7 @@ class CreateMeetingActivity : AppCompatActivity() {
                     .build()
 
             apolloClient.rxMutate(createMeetingMutation)
-                    //TODO(YoungHwan): Add error handling code
+                //TODO(YoungHwan): Add error handling code
                 .subscribeOn(Schedulers.io()).subscribe(
                     {
                         Log.e("RES", it.data().toString())
@@ -55,4 +55,3 @@ class CreateMeetingActivity : AppCompatActivity() {
         }
     }
 }
-
