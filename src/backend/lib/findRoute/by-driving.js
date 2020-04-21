@@ -1,4 +1,4 @@
-const API_KEY = require('../../config/API_KEY.json');
+const API_KEY = require('../../config/API-KEY.json');
 const axios = require('axios');
 const NAVER_API_ID = API_KEY.naverClientID;
 const NAVER_API_KEY = API_KEY.naverAPI;
@@ -19,7 +19,7 @@ const shortestPath = async (startLng, startLat, endLng, endLat, optionCode = 'tr
     }
   })
     .then((res) => {
-      //TODO(Taeyoung): Refactor below codes properly.
+      // TODO(Taeyoung): Refactor below codes properly.
       if (optionCode == 'traoptimal') {
         distance = res.data.route.traoptimal[0].summary.distance;
         duration = res.data.route.traoptimal[0].summary.duration;

@@ -85,8 +85,8 @@ typings/
 .dynamodb/
 
 # config
-/config/server_config.json
-/config/API_KEY.json
+/config/server-config.json
+/config/API-KEY.json
 
 # Location candidates file
 # location_candidates.json

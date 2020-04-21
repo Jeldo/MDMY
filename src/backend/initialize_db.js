@@ -28,7 +28,7 @@ let locationSchema = new mongoose.Schema({
 locationSchema.index({ location: '2dsphere' });
 
 // compile schema to model
-let areaModel = mongoose.model('CandidateLocs', locationSchema);
+let areaModel = mongoose.model('CandidateLocation', locationSchema);
 
 //read JSONfile
 let locationCandidates = JSON.parse(fs.readFileSync('location_candidates.json', 'utf8'));

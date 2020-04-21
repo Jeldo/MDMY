@@ -7,7 +7,7 @@ const resultSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  areas: {
+  candidates: {
     type: Array,
   },
 });
