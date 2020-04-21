@@ -8,5 +8,4 @@
     <string name="alert_meeting_name">모임 이름을 입력해주세요.</string>
     <string name="alert_number_of_participant">2명 이상의 인원수를 입력해주세요.</string>
     <string name="alert_network">네트워크를 확인해 주세요</string>
-    <string name="PlaceAPIKey"></string>
 </resources>

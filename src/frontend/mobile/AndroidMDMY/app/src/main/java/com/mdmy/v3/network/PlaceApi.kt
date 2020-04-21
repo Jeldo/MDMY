@@ -1,7 +1,7 @@
 package com.mdmy.v3.network
 
 import android.util.Log
-import com.mdmy.v3.R
+import com.mdmy.v3.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONException
@@ -18,15 +18,15 @@ import java.util.*
 object PlaceApi {
     suspend fun autoComplete(input: String): ArrayList<String?> {
         val arrayList: ArrayList<String?> = ArrayList<String?>()
-
         withContext(Dispatchers.IO) {
             var connection: HttpURLConnection? = null
             val jsonResult = StringBuilder()
+
             try {
                 val sb =
                     StringBuilder("https://maps.googleapis.com/maps/api/place/autocomplete/json?")
                 sb.append("input=$input")
-                sb.append("&key=").append(R.string.PlaceAPIKey)
+                sb.append("&key=").append(BuildConfig.PLACE_KEY)
                 val url = URL(sb.toString())
                 connection = url.openConnection() as HttpURLConnection?
                 val inputStreamReader =
@@ -36,7 +36,6 @@ object PlaceApi {
                 while (inputStreamReader.read(buff).also { read = it } != -1) {
                     jsonResult.append(buff, 0, read)
                 }
-                Log.d("JSon", jsonResult.toString())
             } catch (e: MalformedURLException) {
                 e.printStackTrace()
             } catch (e: IOException) {
@@ -54,7 +53,6 @@ object PlaceApi {
                 e.printStackTrace()
             }
         }
-
         return arrayList
     }
 }

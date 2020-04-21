@@ -13,6 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField ("String", "PLACE_KEY", '"AIzaSyDotMjqYHXMhulgtsZ-QUAogDdDxPVFAaE"')
     }
     buildTypes {
         release {
@@ -47,12 +49,12 @@ dependencies {
 
     //material
     implementation 'com.google.android.material:material:1.2.0-alpha05'
-
     implementation 'com.google.android.gms:play-services-places:17.0.0'
 
     //google places
     implementation 'com.google.android.libraries.places:places:2.2.0'
-
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
