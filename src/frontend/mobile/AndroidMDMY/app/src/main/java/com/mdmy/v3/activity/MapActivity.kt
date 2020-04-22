@@ -90,17 +90,19 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        val title = "search result"
+        val zoomLevel = 15f
         mMap = googleMap
         mResultAdapter =
             PlaceResultAdapter(object : PlaceResultAdapter.ResultClickListener {
                 override fun resultClicked(result: String) {
                     val point: LatLng = getLatLngFromAddress(result)!!
                     val mOptions2 = MarkerOptions()
-                    mOptions2.title("search result")
+                    mOptions2.title(title)
                     mOptions2.snippet(result)
                     mOptions2.position(point)
                     mMap.addMarker(mOptions2)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, zoomLevel))
                 }
             })
         mResultList = findViewById<RecyclerView>(R.id.rv_list_item).apply {
@@ -115,8 +117,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         return try {
             addressList = geocoder.getFromLocationName(address, 1)
             if (addressList != null) {
-                val singleaddress = addressList[0]
-                LatLng(singleaddress.latitude, singleaddress.longitude)
+                val singleAddress = addressList[0]
+                LatLng(singleAddress.latitude, singleAddress.longitude)
             } else {
                 null
             }

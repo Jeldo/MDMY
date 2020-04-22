@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:srcCompat="@mipmap/ic_launcher_round"/>
 
     <TextView
         android:id="@+id/tv_list_item"
@@ -30,5 +30,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/img_list_item"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="desc" />
+        tools:text="desc"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

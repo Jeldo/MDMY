@@ -18,12 +18,14 @@ import java.util.*
 object PlaceApi {
     suspend fun autoComplete(input: String): ArrayList<String?> {
         val arrayList: ArrayList<String?> = ArrayList<String?>()
+        val BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?"
+        val BUFFER_SIZE = 1024
         withContext(Dispatchers.IO) {
             var connection: HttpURLConnection? = null
             val jsonResult = StringBuilder()
             try {
                 val sb =
-                    StringBuilder("https://maps.googleapis.com/maps/api/place/autocomplete/json?")
+                    StringBuilder(BASE_URL)
                 sb.append("input=$input")
                 sb.append("&key=").append(BuildConfig.PLACE_KEY)
                 val url = URL(sb.toString())
@@ -31,7 +33,7 @@ object PlaceApi {
                 val inputStreamReader =
                     InputStreamReader(connection?.inputStream)
                 var read: Int
-                val buff = CharArray(1024)
+                val buff = CharArray(BUFFER_SIZE)
                 while (inputStreamReader.read(buff).also { read = it } != -1) {
                     jsonResult.append(buff, 0, read)
                 }
