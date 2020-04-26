@@ -19,7 +19,7 @@ module.exports = async (token, name, transportation, location, locationName) => 
 
   await meetingUser.save().then((result) => {
     saveValue = result;
-    console.log(result);
+    // console.log(result);
   });
 
   return saveValue;

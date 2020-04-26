@@ -22,7 +22,7 @@ const participantResolvers = {
         throw new UserInputError('Invalid Token');
       }
       if (targetMeeting.numberOfParticipants == targetMeeting.participants.length) {
-        throw new ApolloError('Cannot add more user');
+        throw new ApolloError(message = 'Cannot add more user');
       }
       let newParticipant;
       try {
@@ -34,6 +34,7 @@ const participantResolvers = {
             coordinates: args.location.coordinates
           },
           locationName: args.locationName,
+          transportation: args.transportation,
         });
         targetMeeting.participants.push(newParticipant._id);
         await Meeting.findOneAndUpdate(
