@@ -14,7 +14,7 @@ let makeMeeting = async (name, num) => {
 
   await meeting.save().then((result) => {
     savedMeeting = result;
-    console.log(result);
+    // console.log(result);
   });
 
   return savedMeeting;
