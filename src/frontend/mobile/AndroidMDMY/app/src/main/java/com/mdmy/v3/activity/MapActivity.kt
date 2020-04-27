@@ -45,8 +45,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initViews() {
-
-        if(intent.hasExtra("token")){
+        if(intent.hasExtra("token")) {
             mToken = intent.getStringExtra("token")
         }
 
@@ -94,9 +93,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         btn_submit.setOnClickListener{
             val intent = Intent(this, UserInfoActivity::class.java)
             intent.putExtra("token", mToken)
-            intent.putExtra("Lat",mLat)
-            intent.putExtra("Lng",mLng)
-            intent.putExtra("locationName",mLocationName)
+            intent.putExtra("Lat", mLat)
+            intent.putExtra("Lng", mLng)
+            intent.putExtra("locationName", mLocationName)
             startActivity(intent)
         }
     }
@@ -111,8 +110,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val title = "search result"
-        val zoomLevel = 15f
+        val TITLE = "search result"
+        val ZOOM_LEVEL = 15f
         mMap = googleMap
         val sheetBehavior = BottomSheetBehavior.from(bottomSheet)
         mResultAdapter =
@@ -123,13 +122,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                     mLng = point.longitude
                     mLocationName = result
                     val mOptions2 = MarkerOptions()
-                    mOptions2.title(title)
+                    mOptions2.title(TITLE)
                     mOptions2.snippet(result)
                     mOptions2.position(point)
                     sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                     layout_submit.visibility = VISIBLE
                     mMap.addMarker(mOptions2)
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, zoomLevel))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, ZOOM_LEVEL))
                 }
             })
         mResultList = findViewById<RecyclerView>(R.id.rv_list_item).apply {

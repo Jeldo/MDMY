@@ -1,6 +1,5 @@
 package com.mdmy.v3.network
 
-import android.util.Log
 import com.mdmy.v3.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -17,7 +16,7 @@ import java.util.*
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 object PlaceApi {
     suspend fun autoComplete(input: String): ArrayList<String?> {
-        val arrayList: ArrayList<String?> = ArrayList<String?>()
+        val placeList: ArrayList<String?> = ArrayList<String?>()
         val BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input="
         val BUFFER_SIZE = 1024
         withContext(Dispatchers.IO) {
@@ -47,12 +46,12 @@ object PlaceApi {
                 val jsonObject = JSONObject(jsonResult.toString())
                 val prediction = jsonObject.getJSONArray("predictions")
                 for (i in 0 until prediction.length()) {
-                    arrayList.add(prediction.getJSONObject(i).getString("description"))
+                    placeList.add(prediction.getJSONObject(i).getString("description"))
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
         }
-        return arrayList
+        return placeList
     }
 }

@@ -1,5 +1,0 @@
-query getMeetingById($id:ID!){
-    getMeetingById(id: $id){
-        token
-    }
-}

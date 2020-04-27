@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_user_info.*
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class UserInfoActivity : AppCompatActivity() {
     private var mToken: String = ""
-    private var mLatLng : MutableList<Double> = mutableListOf()
+    private var mLatLng: MutableList<Double> = mutableListOf()
     private var mTransportation: String = ""
     private var mLocationName: String = ""
 
@@ -27,28 +27,27 @@ class UserInfoActivity : AppCompatActivity() {
 
     private fun initViews() {
         if (intent.hasExtra("token")) mToken = intent.getStringExtra("token")
-        if (intent.hasExtra("locationName")) mLocationName = intent.getStringExtra("locationName")
-        if (intent.hasExtra("Lat")) mLatLng.add(intent.getDoubleExtra("Lat",0.0))
-        if (intent.hasExtra("Lng")) mLatLng.add(intent.getDoubleExtra("Lng",0.0))
+        if (intent.hasExtra("locationName"))
+            mLocationName = intent.getStringExtra("locationName")
+        if (intent.hasExtra("Lat")) mLatLng.add(intent.getDoubleExtra("Lat", 0.0))
+        if (intent.hasExtra("Lng")) mLatLng.add(intent.getDoubleExtra("Lng", 0.0))
 
         btn_submit_info.setOnClickListener {
             val createParticipantMutation: CreateParticipantMutation =
                 CreateParticipantMutation.builder().participantName(et_name.text.toString())
-                    .locationName(mLocationName).transportation(mTransportation)
-                    .location(mLatLng).token(mToken).build()
+                    .transportation(mTransportation).token(mToken).locationName(mLocationName)
+                    .location(mLatLng).build()
 
             ApolloService.apolloClient.rxMutate(createParticipantMutation)
                 .subscribeOn(Schedulers.io()).subscribe(
-                    {
-                        Log.e("RES", it.data().toString())
-                    }, {
+                    {}, {
                         Log.e("ERR", it.toString())
                     }
                 )
         }
 
         rg_transportation.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.radio_car) mTransportation = "car"
+            if (checkedId == R.id.radio_car) mTransportation = "driving"
             else mTransportation = "public"
         }
     }
