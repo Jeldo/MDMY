@@ -57,6 +57,7 @@ class CreateMeetingActivity : AppCompatActivity() {
                         {
                             Log.e("RES", it.data().toString())
                             val intent = Intent(this, MapActivity::class.java)
+                            intent.putExtra("token", it.data()?.createMeeting()?.token())
                             startActivity(intent)
                         }, {
                             Log.e("ERR", it.message.toString())

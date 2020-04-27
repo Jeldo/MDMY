@@ -18,7 +18,7 @@ import java.util.*
 object PlaceApi {
     suspend fun autoComplete(input: String): ArrayList<String?> {
         val arrayList: ArrayList<String?> = ArrayList<String?>()
-        val BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?"
+        val BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input="
         val BUFFER_SIZE = 1024
         withContext(Dispatchers.IO) {
             var connection: HttpURLConnection? = null
@@ -26,8 +26,7 @@ object PlaceApi {
             try {
                 val sb =
                     StringBuilder(BASE_URL)
-                sb.append("input=$input")
-                sb.append("&key=").append(BuildConfig.PLACE_KEY)
+                sb.append(input).append("&key=").append(BuildConfig.PLACE_KEY)
                 val url = URL(sb.toString())
                 connection = url.openConnection() as HttpURLConnection?
                 val inputStreamReader =

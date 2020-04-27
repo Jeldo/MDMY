@@ -1,11 +1,13 @@
 package com.mdmy.v3.activity
 
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +32,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mResultList: RecyclerView
     private lateinit var mResultAdapter: PlaceResultAdapter
     private lateinit var mMap: GoogleMap
+    private var mLat : Double = 0.0
+    private var mLng : Double = 0.0
     private var mPlaceKeyword: String = ""
+    private var mToken:String? =""
+    private var mLocationName:String? =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +45,20 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initViews() {
+
+        if(intent.hasExtra("token")){
+            mToken = intent.getStringExtra("token")
+        }
+
         BottomSheetBehavior.STATE_EXPANDED
-        val sheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.layout_map) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)
 
         btn_start_location.setOnClickListener {
-            appbar.visibility = View.VISIBLE
+            val sheetBehavior = BottomSheetBehavior.from(bottomSheet)
+            appbar.visibility = VISIBLE
             layout_start_location.visibility = View.INVISIBLE
             sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
@@ -65,7 +76,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
             addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
-                    mPlaceKeyword = p0?.toString() ?: ""
+                    mPlaceKeyword = et_search_box.text.toString()
+                    searchPlaces()
                 }
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -74,9 +86,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             })
         }
 
-        btn_serach.setOnClickListener {
+        btn_search.setOnClickListener {
             mPlaceKeyword = et_search_box.text.toString()
             searchPlaces()
+        }
+
+        btn_submit.setOnClickListener{
+            val intent = Intent(this, UserInfoActivity::class.java)
+            intent.putExtra("token", mToken)
+            intent.putExtra("Lat",mLat)
+            intent.putExtra("Lng",mLng)
+            intent.putExtra("locationName",mLocationName)
+            startActivity(intent)
         }
     }
 
@@ -93,14 +114,20 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val title = "search result"
         val zoomLevel = 15f
         mMap = googleMap
+        val sheetBehavior = BottomSheetBehavior.from(bottomSheet)
         mResultAdapter =
             PlaceResultAdapter(object : PlaceResultAdapter.ResultClickListener {
                 override fun resultClicked(result: String) {
-                    val point: LatLng = getLatLngFromAddress(result)!!
+                    val point = getLatLngFromAddress(result)!!
+                    mLat = point.latitude
+                    mLng = point.longitude
+                    mLocationName = result
                     val mOptions2 = MarkerOptions()
                     mOptions2.title(title)
                     mOptions2.snippet(result)
                     mOptions2.position(point)
+                    sheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                    layout_submit.visibility = VISIBLE
                     mMap.addMarker(mOptions2)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, zoomLevel))
                 }

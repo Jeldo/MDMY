@@ -1,0 +1,24 @@
+mutation CreateParticipant(
+    $participantName: String!,
+    $location: [Float!]!,
+    $locationName: String!,
+    $token: String!,
+    $transportation: String!
+){
+    createParticipant(
+        participantName: $participantName,
+        location:{
+            coordinates: $location
+        }
+        locationName: $locationName
+        token: $token
+        transportation: $transportation){
+        _id
+        participantName
+        location{
+            coordinates
+        }
+        locationName
+        transportation
+    }
+}
