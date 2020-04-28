@@ -34,13 +34,19 @@ class UserInfoActivity : AppCompatActivity() {
 
         btn_submit_info.setOnClickListener {
             val createParticipantMutation: CreateParticipantMutation =
-                CreateParticipantMutation.builder().participantName(et_name.text.toString())
-                    .transportation(mTransportation).token(mToken).locationName(mLocationName)
-                    .location(mLatLng).build()
+                CreateParticipantMutation.builder()
+                    .participantName(et_name.text.toString())
+                    .transportation(mTransportation)
+                    .token(mToken)
+                    .locationName(mLocationName)
+                    .location(mLatLng)
+                    .build()
 
             ApolloService.apolloClient.rxMutate(createParticipantMutation)
                 .subscribeOn(Schedulers.io()).subscribe(
-                    {}, {
+                    {
+                        // TODO(YoungHwan): Add response handling code
+                    }, {
                         Log.e("ERR", it.toString())
                     }
                 )

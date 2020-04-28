@@ -12,7 +12,6 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.util.*
 
-
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 object PlaceApi {
     suspend fun autoComplete(input: String): ArrayList<String?> {

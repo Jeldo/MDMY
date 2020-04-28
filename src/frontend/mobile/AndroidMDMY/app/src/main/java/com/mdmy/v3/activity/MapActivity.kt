@@ -35,8 +35,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private var mLat : Double = 0.0
     private var mLng : Double = 0.0
     private var mPlaceKeyword: String = ""
-    private var mToken:String? =""
-    private var mLocationName:String? =""
+    private var mToken:String? = ""
+    private var mLocationName:String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
