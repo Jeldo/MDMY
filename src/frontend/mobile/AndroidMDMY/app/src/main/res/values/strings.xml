@@ -8,5 +8,10 @@
     <string name="alert_meeting_name">모임 이름을 입력해주세요.</string>
     <string name="alert_number_of_participant">2명 이상의 인원수를 입력해주세요.</string>
     <string name="alert_network">네트워크를 확인해 주세요</string>
+    <string name="info_name">이름</string>
+    <string name="info_transportation">이동수단</string>
+    <string name="submit">확인</string>
+    <string name="transportation_car">자가용</string>
+    <string name="transportation_public">대중교통</string>
 
 </resources>

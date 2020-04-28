@@ -55,8 +55,8 @@ class CreateMeetingActivity : AppCompatActivity() {
                     //TODO(YoungHwan): Add error handling code
                     .subscribeOn(Schedulers.io()).subscribe(
                         {
-                            Log.e("RES", it.data().toString())
                             val intent = Intent(this, MapActivity::class.java)
+                            intent.putExtra("token", it.data()?.createMeeting()?.token())
                             startActivity(intent)
                         }, {
                             Log.e("ERR", it.message.toString())
