@@ -1,7 +1,7 @@
 query getMeetingByToken(
     $token: String!
 ){
-    getMeetingByToken(token: $token){
+    getMeetingByToken(token: $token) {
         meetingName
         participants{
             location{

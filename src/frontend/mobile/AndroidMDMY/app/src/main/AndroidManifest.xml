@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ResultActivity"></activity>
-        <activity android:name=".activity.UserInfoActivity"></activity>
+        <activity android:name=".activity.ResultActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
         <activity
             android:name=".activity.CreateMeetingActivity"
             android:windowSoftInputMode="adjustResize">

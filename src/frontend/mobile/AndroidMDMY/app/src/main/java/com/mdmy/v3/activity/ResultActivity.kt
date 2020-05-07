@@ -33,7 +33,9 @@ class ResultActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initViews() {
-        if (intent.hasExtra("token")) mToken = intent.getStringExtra("token")
+        if (intent.hasExtra("token")) {
+            mToken = intent.getStringExtra("token")
+        }
         setLatLng()
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_result_map) as SupportMapFragment?
@@ -54,7 +56,9 @@ class ResultActivity : AppCompatActivity(), OnMapReadyCallback {
 
         apolloClient.rxQuery(getMeetingByTokenQuery)
             .map {
-                if (intent.hasExtra("token")) mToken = intent.getStringExtra("token")
+                if (intent.hasExtra("token")) {
+                    mToken = intent.getStringExtra("token")
+                }
                 val searchPoint: MutableList<Double> = mutableListOf(0.0, 0.0)
                 val participants = it.data()?.meetingByToken?.participants()
                 for (participant in participants!!) {
