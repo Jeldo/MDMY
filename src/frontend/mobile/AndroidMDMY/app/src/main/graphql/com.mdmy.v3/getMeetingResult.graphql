@@ -1,0 +1,14 @@
+mutation getMeetingResult(
+    $token: String!,
+    $searchpoint:[Float!]!
+) {
+    getMeetingResult(
+        token: $token
+        searchPoint: $searchpoint
+    ) {
+        meetingName
+        result {
+            candidates
+        }
+    }
+}

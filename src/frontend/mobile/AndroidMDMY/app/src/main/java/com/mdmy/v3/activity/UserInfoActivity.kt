@@ -1,11 +1,14 @@
 package com.mdmy.v3.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.apollographql.apollo.rx2.rxMutate
+import com.apollographql.apollo.rx2.rxQuery
 import com.mdmy.v3.CreateParticipantMutation
+import com.mdmy.v3.GetMeetingByTokenQuery
 import com.mdmy.v3.R
 import com.mdmy.v3.network.ApolloService
 import io.reactivex.schedulers.Schedulers
@@ -26,11 +29,18 @@ class UserInfoActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        if (intent.hasExtra("token")) mToken = intent.getStringExtra("token")
-        if (intent.hasExtra("locationName"))
+        if (intent.hasExtra("token")) {
+            mToken = intent.getStringExtra("token")
+        }
+        if (intent.hasExtra("locationName")) {
             mLocationName = intent.getStringExtra("locationName")
-        if (intent.hasExtra("Lat")) mLatLng.add(intent.getDoubleExtra("Lat", 0.0))
-        if (intent.hasExtra("Lng")) mLatLng.add(intent.getDoubleExtra("Lng", 0.0))
+        }
+        if (intent.hasExtra("Lat")) {
+            mLatLng.add(intent.getDoubleExtra("Lat", 0.0))
+        }
+        if (intent.hasExtra("Lng")) {
+            mLatLng.add(intent.getDoubleExtra("Lng", 0.0))
+        }
 
         btn_submit_info.setOnClickListener {
             val createParticipantMutation: CreateParticipantMutation =
@@ -46,6 +56,7 @@ class UserInfoActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io()).subscribe(
                     {
                         // TODO(YoungHwan): Add response handling code
+                        checkNumberOfParticipants()
                     }, {
                         Log.e("ERR", it.toString())
                     }
@@ -53,8 +64,43 @@ class UserInfoActivity : AppCompatActivity() {
         }
 
         rg_transportation.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.radio_car) mTransportation = "driving"
-            else mTransportation = "public"
+            if (checkedId == R.id.radio_car) {
+                mTransportation = "driving"
+            } else mTransportation = "public"
         }
+    }
+
+    @SuppressLint("CheckResult")
+    fun checkNumberOfParticipants() {
+        var isFull = false
+        val getMeetingByTokenQuery: GetMeetingByTokenQuery =
+            GetMeetingByTokenQuery.builder()
+                .token(mToken)
+                .build()
+
+        ApolloService.apolloClient.rxQuery(getMeetingByTokenQuery)
+            .map {
+                if (it.data()?.meetingByToken?.numberOfParticipants()!!.toInt()
+                    == it.data()?.meetingByToken?.participants()?.size!!.toInt()
+                ) {
+                    isFull = true
+                }
+                return@map isFull
+            }
+            .subscribeOn(Schedulers.io()).subscribe(
+                {
+                    if (isFull) {
+                        val intent = Intent(this, ResultActivity::class.java)
+                        intent.putExtra("token", mToken)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this, MapActivity::class.java)
+                        intent.putExtra("token", mToken)
+                        startActivity(intent)
+                    }
+                }, {
+                    Log.e("ERR", it.message.toString())
+                }
+            )
     }
 }

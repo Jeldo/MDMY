@@ -5,10 +5,6 @@ schema {
     mutation: Mutation
 }
 
-type Area {
-    areaName: String!
-}
-
 type Coordinates {
     coordinates: [Float!]!
 }
@@ -23,10 +19,12 @@ type Meeting {
 }
 
 type Mutation {
+    castVote(locationName: String!, token: String!): Meeting
     createMeeting(meetingName: String!, numberOfParticipants: Int!): Meeting!
     createParticipant(location: InputCoordinates!, locationName: String!, participantName: String!, token: String!, transportation: String!): Participant
     deleteMeeting(id: ID!): Meeting
     deleteParticipant(id: ID!): Participant
+    getMeetingResult(searchPoint: [Float!]!, token: String!): Meeting
 }
 
 type Participant {
@@ -48,7 +46,7 @@ type Query {
 
 type Result {
     _id: ID!
-    area: [Area!]
+    candidates: [JSONObject]
     meeting: Meeting!
 }
 
@@ -61,6 +59,9 @@ input InputCoordinates {
     coordinates: [Float!]!
 }
 
+
+"The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSONObject
 
 "The `Upload` scalar type represents a file upload."
 scalar Upload
