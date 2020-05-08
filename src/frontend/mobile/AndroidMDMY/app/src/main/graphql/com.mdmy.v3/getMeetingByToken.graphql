@@ -1,10 +1,10 @@
 query getMeetingByToken(
     $token: String!
-){
+) {
     getMeetingByToken(token: $token) {
         meetingName
-        participants{
-            location{
+        participants {
+            location {
                 coordinates
             }
         }

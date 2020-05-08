@@ -7,7 +7,7 @@ mutation getMeetingResult(
         searchPoint: $searchpoint
     ) {
         meetingName
-        result{
+        result {
             candidates
         }
     }
