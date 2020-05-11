@@ -1,7 +1,5 @@
 # ㅁㄷㅁㅇ
 
-<img src="./doc/main_img.jpg">
-
 ## Our goal
 
 다수의 모임에서 만남의 장소를 정하는 것은 쉽지 않다. 모임의 위치, 목적, 살고 있는 곳 등 다양한 요인이 복합적으로 작용하기 때문이다. 이러한 상황에서 우리는 모임 구성원의 지역과 모임의 특성을 파악해서 최적의 장소를 모색해주고자 한다.
@@ -12,13 +10,11 @@ It is not easy to find a meeting place for a large group due to the various fact
 
 v2: 최성훈, 강인호, 곽태영, 신영환, 장진형
 
-v3 : 곽태영, 신영환
+v3: 곽태영, 신영환
 
 ## Usage
 
-#### ~~(1) http://mdmy.s3-website.ap-northeast-2.amazonaws.com/ 접속~~
-
-#### (1) 현재는 서버 운영 중단
+#### ~~(1) http://mdmy.s3-website.ap-northeast-2.amazonaws.com/ 접속~~ 현재는 서버 운영 중단
 
 #### (2) '모임 만들기' 버튼을 클릭하여 모임 생성
 
