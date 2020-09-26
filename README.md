@@ -1,4 +1,4 @@
-# ㅁㄷㅁㅇ / MeetAtMid
+# MeetAtMid / 미드모여
 
 [v2 Link](https://github.com/kookmin-sw/2019-cap1-2019_5)
 ## Goal
