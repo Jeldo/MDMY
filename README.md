@@ -1,11 +1,10 @@
 # MeetAtMid / 미드모여
 
 [v2 Link](https://github.com/kookmin-sw/2019-cap1-2019_5)
+
 ## Goal
 
 다수의 모임에서 만남의 장소를 정하는 것은 쉽지 않다. 모임의 위치, 목적, 살고 있는 곳 등 다양한 요인이 복합적으로 작용하기 때문이다. 이러한 상황에서 우리는 모임 구성원의 지역과 모임의 특성을 파악해서 최적의 장소를 모색해주고자 한다.
-
-It is not easy to find a meeting place for a large group due to the various factors such as the location, purpose of meeting and residence of members. We aim to provide optimal places by identifying the location of group members and the characteristic of the group. This provides users with optimal places that they can easily find.
 
 ## System Architecture
 
